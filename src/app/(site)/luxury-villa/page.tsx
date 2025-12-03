@@ -3,7 +3,7 @@ import LuxuryVillas from "@/components/Properties/LuxuryVilla";
 import React from "react";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Property List | Leevrage",
+    title: "Property List | leeverage",
 };
 
 const page = () => {
