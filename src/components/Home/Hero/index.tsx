@@ -1,114 +1,97 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import { cn } from "@/lib/utils"
+import { Marquee } from "@/components/ui/marquee"
+import Image from "next/image"
 
-const Hero: React.FC = () => {
+const reviews = [
+  {
+    name: "Properties",
+    id: "01",
+    body: "We develop and manage residential and commercial properties built for long term value and modern living.",
+    img: "https://avatar.vercel.sh/aurotra",
+  },
+  {
+    name: "Hospitality",
+    id: "02",
+    body: "Hospitality spaces designed around comfort, experience, and thoughtful attention to detail.",
+    img: "https://avatar.vercel.sh/saffron",
+  },
+  {
+    name: "Interior Design",
+    id: "03",
+    body: "Interior design that balances aesthetics and function to create timeless, livable spaces.",
+    img: "https://avatar.vercel.sh/corral",
+  }, {
+    name: "Properties",
+    id: "04",
+    body: "We develop and manage residential and commercial properties built for long term value and modern living.",
+    img: "https://avatar.vercel.sh/saffronn",
+  },
+  {
+    name: "Hospitality",
+    id: "05",
+    body: "Hospitality spaces designed around comfort, experience, and thoughtful attention to detail.",
+    img: "https://avatar.vercel.sh/azure",
+  },
+  {
+    name: "Interior Design",
+    id: "06",
+    body: "Interior design that balances aesthetics and function to create timeless, livable spaces.",
+    img: "https://avatar.vercel.sh/auroa",
+  }
+]
+
+const firstRow = reviews.slice(0, reviews.length / 2)
+const secondRow = reviews.slice(reviews.length / 2)
+
+const ReviewCard = ({
+  img,
+  id,
+  name,
+  body,
+}: {
+  img: string
+  name: string
+  id: string
+  body: string
+}) => {
   return (
-    <section className='!py-0'>
-      <div className='bg-gradient-to-b from-skyblue via-lightskyblue dark:via-[#4298b0] to-white/10 dark:to-black/10 overflow-hidden relative'>
-        <div className='container max-w-8xl mx-auto px-5 2xl:px-0 pt-32 md:pt-60 md:pb-68'>
-          <div className='relative text-white dark:text-dark text-center md:text-start z-10'>
-            <p className='text-inherit text-xm font-medium'>Palm springs, CA</p>
-            <h1 className='text-inherit text-6xl sm:text-9xl font-semibold -tracking-wider md:max-w-45p mt-4 mb-6'>
-              Futuristic Haven
-            </h1>
-            <div className='flex flex-col xs:flex-row justify-center md:justify-start gap-4'>
-              <Link href="/contactus" className='px-8 py-4 border border-white dark:border-dark bg-primary dark:bg-primary text-white dark:text-white duration-300 dark:hover:text-dark hover:bg-transparent hover:text-white text-base font-semibold rounded-full hover:cursor-pointer'>
-                Get in touch
-              </Link>
-              <button className='px-8 py-4 border border-white dark:border-dark bg-transparent text-white dark:text-dark hover:bg-white dark:hover:bg-dark dark:hover:text-white hover:text-dark duration-300 text-base font-semibold rounded-full hover:cursor-pointer'>
-                View Details
-              </button>
-            </div>
-          </div>
-          <div className='hidden md:block absolute -top-2 -right-68'>
-            <Image
-              src={'/images/hero/heroBanner.png'}
-              alt='heroImg'
-              width={1082}
-              height={1016}
-              priority={false}
-              unoptimized={true}
-            />
-          </div>
-        </div>
-        <div className='md:absolute bottom-0 md:-right-68 xl:right-0 bg-white dark:bg-black py-12 px-8 mobile:px-16 md:pl-16 md:pr-[295px] rounded-2xl md:rounded-none md:rounded-tl-2xl mt-24'>
-          <div className='grid grid-cols-2 sm:grid-cols-4 md:flex gap-16 md:gap-24 sm:text-center dark:text-white text-black'>
-            <div className='flex flex-col sm:items-center gap-3'>
-              <Image
-                src={'/images/hero/sofa.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='block dark:hidden'
-                unoptimized={true}
-              />
-              <Image
-                src={'/images/hero/dark-sofa.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='hidden dark:block'
-                unoptimized={true}
-              />
-              <p className='text-sm sm:text-base font-normal text-inherit'>
-                4 Bedrooms
-              </p>
-            </div>
-            <div className='flex flex-col sm:items-center gap-3'>
-              <Image
-                src={'/images/hero/tube.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='block dark:hidden'
-                unoptimized={true}
-              />
-              <Image
-                src={'/images/hero/dark-tube.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='hidden dark:block'
-                unoptimized={true}
-              />
-              <p className='text-sm sm:text-base font-normal text-inherit'>
-                4 Restroom
-              </p>
-            </div>
-            <div className='flex flex-col sm:items-center gap-3'>
-              <Image
-                src={'/images/hero/parking.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='block dark:hidden'
-                unoptimized={true}
-              />
-              <Image
-                src={'/images/hero/dark-parking.svg'}
-                alt='sofa'
-                width={32}
-                height={32}
-                className='hidden dark:block'
-                unoptimized={true}
-              />
-              <p className='text-sm sm:text-base font-normal text-inherit'>
-                Parking space
-              </p>
-            </div>
-            <div className='flex flex-col sm:items-center gap-3'>
-              <p className='text-2xl sm:text-3xl font-medium text-inherit'>
-                ₦4,750,000
-              </p>
-              <p className='text-sm sm:text-base font-normal text-black/50 dark:text-white/50'>
-                For selling price
-              </p>
-            </div>
-          </div>
+    <figure
+      className={cn(
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <Image className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-lg font-medium dark:text-white">
+            {name}
+          </figcaption>
         </div>
       </div>
-    </section>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
   )
 }
 
-export default Hero
+export function MarqueeDemo() {
+  return (
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mb-20">
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.id} {...review} />
+        ))}
+      </Marquee>
+      <Marquee reverse pauseOnHover className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.id} {...review} />
+        ))}
+      </Marquee>
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+    </div>
+  )
+}
