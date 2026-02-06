@@ -12,7 +12,7 @@ const GetInTouch: React.FC = () => {
                         muted
                         aria-label="Video background showing luxurious real estate"
                     >
-                        <source src="https://videos.pexels.com/video-files/7233782/7233782-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                        <source src="/video/PV1.mp4" type="video/mp4" />
                     </video>
 
                     <div className="bg-black/30 lg:py-64 md:py-28 py-10">
