@@ -45,13 +45,11 @@ const secondRow = reviews.slice(reviews.length / 2)
 
 const ReviewCard = ({
   img,
-  id,
   name,
   body,
 }: {
   img: string
   name: string
-  id: string
   body: string
 }) => {
   return (
