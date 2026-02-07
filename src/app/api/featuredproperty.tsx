@@ -2,19 +2,19 @@ import { FeaturedProperty } from '@/types/featuredProperty'
 
 export const featuredProprty: FeaturedProperty[] = [
   {
-    scr: '/images/featuredproperty/image-1.jpg',
+    scr: '/images/featuredproperty/image-1.png',
     alt: 'property6',
   },
   {
-    scr: '/images/featuredproperty/image-2.jpg',
+    scr: '/images/featuredproperty/image-2.png',
     alt: 'property7',
   },
-  {
-    scr: '/images/featuredproperty/image-3.jpg',
-    alt: 'property8',
-  },
-  {
-    scr: '/images/featuredproperty/image-4.jpg',
-    alt: 'property9',
-  },
+  // {
+  //   scr: '/images/featuredproperty/image-3.jpg',
+  //   alt: 'property8',
+  // },
+  // {
+  //   scr: '/images/featuredproperty/image-4.jpg',
+  //   alt: 'property9',
+  // },
 ]
