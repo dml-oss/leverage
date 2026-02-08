@@ -18,6 +18,7 @@ const FAQ: React.FC = () => {
                             alt='image'
                             width={680}
                             height={644}
+                            priority={true}
                             className='lg:w-full'
                             unoptimized={true}
                         />
