@@ -1,17 +1,16 @@
-import { getAllPosts, getPostBySlug } from "@/components/utils/markdown";
+import { getPostBySlug } from "@/components/utils/markdown";
 import markdownToHtml from "@/components/utils/markdownToHtml";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from '@iconify/react'
 
-type Props = {
-    params: { slug: string };
-};
+interface BlogParams {
+  slug: string;
+}
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: { params: Promise<BlogParams> }) {
     const data = await params;
-    const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
     const post = getPostBySlug(data.slug, [
         "title",
         "author",
@@ -62,9 +61,8 @@ export async function generateMetadata({ params }: any) {
     }
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: { params: Promise<BlogParams> }) {
     const data = await params;
-    const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
     const post = getPostBySlug(data.slug, [
         "title",
         "author",
@@ -76,7 +74,7 @@ export default async function Post({ params }: any) {
         "detail",
     ]);
 
-    const content = await markdownToHtml(post.content || "");
+   const content = await markdownToHtml(typeof post.content === 'string' ? post.content : "");
 
     return (
         <>
@@ -94,16 +92,16 @@ export default async function Post({ params }: any) {
                                 <span>Go Back</span>
                             </Link>
                             <h2 className="text-dark dark:text-white md:text-52 text-40 leading-[1.2] font-semibold pt-7">
-                                {post.title}
+                                {String(post.title)}
                             </h2>
                             <h6 className="text-xm mt-5 text-dark dark:text-white">
-                                {post.detail}
+                                {String(post.detail)}
                             </h6>
                         </div>
                         <div className="flex items-center justify-between gap-6 mt-12">
                             <div className="flex items-center gap-4">
                                 <Image
-                                    src={post.authorImage}
+                                    src={String(post.authorImage)}
                                     alt="image"
                                     className="bg-no-repeat bg-contain inline-block rounded-full !w-12 !h-12"
                                     width={48}
@@ -113,7 +111,7 @@ export default async function Post({ params }: any) {
                                 />
                                 <div>
                                     <span className="text-xm text-dark dark:text-white">
-                                        {post.author}
+                                        {String(post.author)}
                                     </span>
                                 </div>
                             </div>
@@ -126,18 +124,18 @@ export default async function Post({ params }: any) {
                                         className=''
                                     />
                                     <span className="text-base text-dark font-medium dark:text-white">
-                                        {format(new Date(post.date), "MMM dd, yyyy")}
+                                        {format(new Date(String(post.date)), "MMM dd, yyyy")}
                                     </span>
                                 </div>
                                 <div className="py-2.5 px-5 bg-dark/5 rounded-full dark:bg-white/15">
-                                    <p className="text-sm font-semibold text-dark dark:text-white">{post.tag}</p>
+                                    <p className="text-sm font-semibold text-dark dark:text-white">{String(post.tag)}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="z-20 mt-12 overflow-hidden rounded">
                         <Image
-                            src={post.coverImage}
+                            src={String(post.coverImage)}
                             alt="image"
                             width={1170}
                             height={766}

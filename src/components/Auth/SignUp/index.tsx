@@ -1,20 +1,21 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import SocialSignUp from "../SocialSignUp";
 import Logo from "@/components/Layout/Header/BrandLogo/Logo";
-import { useContext, useState } from "react";
+import { useContext, FormEvent } from "react";
 import AuthDialogContext from "@/app/context/AuthDialogContext";
-const SignUp = ({ signUpOpen }: { signUpOpen?: any }) => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
+
+interface SignUpProps {
+  signUpOpen?: (open: boolean) => void;
+}
+
+const SignUp = ({ signUpOpen }: SignUpProps) => {
   const authDialog = useContext(AuthDialogContext);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoading(true);
     const data = new FormData(e.currentTarget);
     const value = Object.fromEntries(data.entries());
     const finalData = { ...value };
@@ -27,17 +28,14 @@ const SignUp = ({ signUpOpen }: { signUpOpen?: any }) => {
       body: JSON.stringify(finalData),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         toast.success("Successfully registered");
-        setLoading(false);
-        router.push("/");
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         toast.error(err.message);
-        setLoading(false);
       });
     setTimeout(() => {
-      signUpOpen(false);
+      signUpOpen?.(false);
     }, 1200);
     authDialog?.setIsUserRegistered(true);
 
