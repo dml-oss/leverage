@@ -24,15 +24,15 @@ export default function RootLayout({
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
         <NextTopLoader color="#07be8a" />
         <SessionProviderComp session={null}>
-          <ThemeProvider
+          {/* <ThemeProvider
             attribute="class"
             enableSystem={true}
             defaultTheme="light"
-          >
+          > */}
             <Header />
             {children}
             <Footer />
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
         </SessionProviderComp>
       </body>
     </html>
