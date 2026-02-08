@@ -6,6 +6,7 @@ export type PropertyHomes = {
   beds: number
   baths: number
   area: number
+  priority: boolean
   images: PropertyImage[]
 }
 

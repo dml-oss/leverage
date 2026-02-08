@@ -53,6 +53,7 @@ const FeaturedProperty: React.FC = () => {
                       alt={item.alt}
                       width={680}
                       height={530}
+                      priority={true}
                       className="rounded-2xl w-full h-540"
                       unoptimized={true}
                     />

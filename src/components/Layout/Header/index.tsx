@@ -63,9 +63,9 @@ const Header: React.FC = () => {
             </Link>
           </div>
           <div className='flex items-center gap-2 sm:gap-6'>
-            <button
+            {/* <button
               className='hover:cursor-pointer'
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             >
               <Icon
                 icon={'solar:sun-bold'}
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
                 height={32}
                 className='dark:block hidden text-white'
               />
-            </button>
+            </button> */}
             <div className={`hidden md:block`}>
               <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
                 ? sticky
