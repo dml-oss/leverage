@@ -9,6 +9,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 4,
     baths: 3,
     area: 120,
+    priority: true,
     images: [
       {
         src: "/images/properties/property1/p1d.png",
@@ -32,6 +33,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 5,
     baths: 2,
     area: 150,
+    priority: true,
     images: [
       {
         src: "/images/properties/property2/p13c.png",
@@ -55,6 +57,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 3,
     baths: 4,
     area: 180,
+    priority: true,
     images: [
       {
         src: "/images/properties/property3/p2a.png",
@@ -78,6 +81,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 6,
     baths: 3,
     area: 200,
+    priority: true,
     images: [
       {
         src: "/images/properties/property4/p14h.png",
@@ -101,6 +105,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 2,
     baths: 1,
     area: 90,
+    priority: true,
     images: [
       {
         src: "/images/properties/property5/p12j.png",
@@ -124,6 +129,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 4,
     baths: 2,
     area: 130,
+    priority: true,
     images: [
       {
         src: "/images/properties/property6/p15f.png",
@@ -147,6 +153,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 6,
     baths: 3,
     area: 180,
+    priority: true,
     images: [
       {
         src: "/images/properties/property7/p4c.png",
@@ -170,6 +177,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 4,
     baths: 3,
     area: 150,
+    priority: true,
     images: [
       {
         src: "/images/properties/property8/p6d.png",
@@ -193,6 +201,7 @@ export const propertyHomes: PropertyHomes[] = [
     beds: 4,
     baths: 2,
     area: 120,
+    priority: true,
     images: [
       {
         src: "/images/properties/property9/p9g.png",
