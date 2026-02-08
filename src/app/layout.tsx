@@ -4,10 +4,10 @@ import './globals.css'
 import Header from '@/components/Layout/Header'
 import Footer from '@/components/Layout/Footer'
 import { ThemeProvider } from 'next-themes'
-import NextTopLoader from 'nextjs-toploader';
+import NextTopLoader from 'nextjs-toploader'
 import SessionProviderComp from '@/components/nextauth/SessionProvider'
 
-const font = Bricolage_Grotesque({ subsets: ["latin"] });
+const font = Bricolage_Grotesque({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'leeverage - Your Real Estate super friend',
@@ -16,20 +16,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  session,
 }: Readonly<{
   children: React.ReactNode
-  session: any
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${font.className} bg-white dark:bg-black antialiased`}>
         <NextTopLoader color="#07be8a" />
-        <SessionProviderComp session={session}>
+        <SessionProviderComp session={null}>
           <ThemeProvider
-            attribute='class'
+            attribute="class"
             enableSystem={true}
-            defaultTheme='light'>
+            defaultTheme="light"
+          >
             <Header />
             {children}
             <Footer />
